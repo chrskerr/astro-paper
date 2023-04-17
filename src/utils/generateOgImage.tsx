@@ -1,5 +1,7 @@
 import satori, { SatoriOptions } from "satori";
 import { SITE } from "@config";
+import { writeFile } from "node:fs/promises";
+import { Resvg } from "@resvg/resvg-js";
 
 const fetchFonts = async () => {
   // Regular Font
@@ -39,7 +41,6 @@ const ogImage = (text: string) => {
           border: "4px solid #000",
           background: "#ecebeb",
           opacity: "0.9",
-          // filter: "blur(10px)",
           borderRadius: "4px",
           display: "flex",
           justifyContent: "center",
@@ -53,7 +54,6 @@ const ogImage = (text: string) => {
         style={{
           border: "4px solid #000",
           background: "#fefbfb",
-          // boxShadow: "24px 26px 8px 0px #ccc ",
           borderRadius: "4px",
           display: "flex",
           justifyContent: "center",
@@ -118,7 +118,6 @@ const ogImage = (text: string) => {
 const options: SatoriOptions = {
   width: 1200,
   height: 630,
-  // debug: true,
   embedFont: true,
   fonts: [
     {
@@ -136,7 +135,21 @@ const options: SatoriOptions = {
   ],
 };
 
-const generateOgImage = async (mytext = SITE.title) =>
-  await satori(ogImage(mytext), options);
+const generateOgImage = async (mytext = SITE.title) => {
+  const svg = await satori(ogImage(mytext), options);
+
+  // render png in production mode
+  if (import.meta.env.MODE === "production") {
+    const resvg = new Resvg(svg);
+    const pngData = resvg.render();
+    const pngBuffer = pngData.asPng();
+
+    console.info("Output PNG Image  :", `${mytext}.png`);
+
+    await writeFile(`./dist/${mytext}.png`, pngBuffer);
+  }
+
+  return svg;
+};
 
 export default generateOgImage;

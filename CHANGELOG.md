@@ -2,6 +2,72 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/satnaing/astro-paper/compare/v2.1.0...v2.2.0) (2023-03-16)
+
+
+### Features
+
+* generate og images in png format ([#43](https://github.com/satnaing/astro-paper/issues/43)) ([27507d1](https://github.com/satnaing/astro-paper/commit/27507d1d78531901c20a17d9ce72728c6cbb521e)), closes [#40](https://github.com/satnaing/astro-paper/issues/40)
+
+
+### Bug Fixes
+
+* add plugin-search-dir in prettier write for pnpm ([e49ca61](https://github.com/satnaing/astro-paper/commit/e49ca61d6b7048a8e8b2f50b1d947fd91eaca3eb)), ([37b54af](https://github.com/satnaing/astro-paper/commit/37b54afd9471eb35588e09f1f33ae1634732b02c)), closes [#34](https://github.com/satnaing/astro-paper/issues/34)
+* correct typo in blog posts ([cbce54b](https://github.com/satnaing/astro-paper/commit/cbce54bd1cf951c36a8603db8f7a8487481fc7f1)), closes [#35](https://github.com/satnaing/astro-paper/issues/35)
+* slugifyAll typo ([bcae985](https://github.com/satnaing/astro-paper/commit/bcae9856712773887664bb3a3392e1ebfd78607b))
+
+### Others
+
+* update Astro to v2.1.3 and enable type checking in dev ([329bc22](https://github.com/satnaing/astro-paper/commit/329bc22e97892e5687a841d580215c8fb2d44aa1))
+* add jampack for performance optimization ([#46](https://github.com/satnaing/astro-paper/pull/46)) ([b9254c1](https://github.com/satnaing/astro-paper/commit/b9254c15f1b382c2f3900b3371abce8975768dd9))
+
+## [2.1.0](https://github.com/satnaing/astro-paper/compare/v2.0.0...v2.1.0) (2023-02-08)
+
+
+### Features
+
+* add ESLint and update linting errors ([#26](https://github.com/satnaing/astro-paper/issues/26)) ([a9631d0](https://github.com/satnaing/astro-paper/commit/a9631d0e1e65ac4339c6b4d806b3a17928fa2b62))
+
+
+### Bug Fixes
+
+* make schema(s) strict ([#23](https://github.com/satnaing/astro-paper/issues/23)) ([dc026b3](https://github.com/satnaing/astro-paper/commit/dc026b38defa760d77eddcddb1d4f12fdf8fff99))
+* fix typo and remove unnecessary comments ([#24](https://github.com/satnaing/astro-paper/pull/24)) ([d9a2ffe](https://github.com/satnaing/astro-paper/commit/d9a2ffe9096e2419a740c5b98b57323fbf2f2cb0)) ([#25](https://github.com/satnaing/astro-paper/pull/25)) ([29e0776](https://github.com/satnaing/astro-paper/commit/29e07761f78fa24b307601bf2272a61e084a468b))
+* update dependencies
+
+## [2.0.0](https://github.com/satnaing/astro-paper/compare/v1.4.0...v2.0.0) (2023-01-31)
+
+
+### ⚠ BREAKING CHANGES
+
+Check the AstroPaper v2 in [this blog post](https://astro-paper.pages.dev/posts/astro-paper-2/)
+
+* **deps:** Migration of Astro to version 2
+
+### Features
+
+* add Mastodon social link ([2ec3912](https://github.com/satnaing/astro-paper/commit/2ec39128c65fd0b1dafd6aebd48ac3068f40f9c5))
+* add new predefined color scheme 'astro dark' ([bc263b6](https://github.com/satnaing/astro-paper/commit/bc263b6eac00fbc8ec62481f2ec0317ee11bc83a))
+* define blog schema and add blog collection ([b420e68](https://github.com/satnaing/astro-paper/commit/b420e688ca3a197a7e4ea2591193fd09da817ec7))
+
+
+### Bug Fixes
+
+* add embedFont option for Satori ([9322123](https://github.com/satnaing/astro-paper/commit/93221239ddaebaa9ab183871cf978548ea8d0ea5))
+* exclude draft posts in specific tag page ([c192cd8](https://github.com/satnaing/astro-paper/commit/c192cd8e5042d4481bcb0d0389866cf4a969aa8d))
+* fix broken tags in PostDetails page ([a61fd45](https://github.com/satnaing/astro-paper/commit/a61fd455594932c66380a358b81b8bebb9d604cc))
+* fix typo in title and slug ([945acf4](https://github.com/satnaing/astro-paper/commit/945acf4260e0ea79bde8b180835049eda07d3e6a))
+* hide social links section if no link is active ([42eb018](https://github.com/satnaing/astro-paper/commit/42eb0188896a8475a7fbb894775e5500ca8b7d35)), closes [#16](https://github.com/satnaing/astro-paper/issues/16)
+* make the last part of breadcrumb lowercase in specific tag page ([c556202](https://github.com/satnaing/astro-paper/commit/c556202c972f1f9fed9af0ba6abf199e7deccc5f))
+* resolve initial onChange input value bug ([bf4f687](https://github.com/satnaing/astro-paper/commit/bf4f687d2d87cfeef96141c5324d02c37766845b))
+* update card bg color ([8a99601](https://github.com/satnaing/astro-paper/commit/8a99601e93f90c0870a22aa4a8ea8b7ff1b76a98))
+* use default-og for twitter card ([9434d85](https://github.com/satnaing/astro-paper/commit/9434d850e1f41f0802de5706c4c5712e5b5def9d))
+
+
+### build
+
+* **deps:** bump astro and its packages to v2 ([5f279b3](https://github.com/satnaing/astro-paper/commit/5f279b34f88bd94bed820d16c1e1d5e95859045f))
+
 ## [1.4.0](https://github.com/satnaing/astro-paper/compare/v1.3.0...v1.4.0) (2022-12-28)
 
 

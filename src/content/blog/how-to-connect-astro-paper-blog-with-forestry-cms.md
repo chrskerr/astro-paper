@@ -1,9 +1,9 @@
 ---
 title: How to connect AstroPaper blog with Forestry CMS
 author: Sat Naing
-datetime: 2022-09-21T05:17:19Z
-slug: how-to-connect-astro-paper-blog-with-forestry-cms
-featured: true
+pubDatetime: 2022-09-21T05:17:19Z
+postSlug: how-to-connect-astro-paper-blog-with-forestry-cms
+featured: false
 draft: false
 tags:
   - docs
@@ -14,6 +14,8 @@ description:
   Step by step process of connecting Astro-Paper blog theme with Forestry
   Headless CMS.
 ---
+
+> Important!!! Forestry is going to be discontinued on April 22nd, 2023. You can [read their announcement](https://forestry.io/blog/forestry.io-end-of-life/) for more info.
 
 In this article, I will explain step by step process of connecting AstroPaper theme with the Forestry headless CMS. So, let's get started 🎉
 
@@ -93,7 +95,7 @@ Then, click "Add Template" button at the top right corner.
 
 Select new template based on existing document.
 
-![Creating new tamplate based on existing document](https://res.cloudinary.com/noezectz/v1663742179/astro-paper/forestry-io-existing-doc_bwcb9q.png)
+![Creating new template based on existing document](https://res.cloudinary.com/noezectz/v1663742179/astro-paper/forestry-io-existing-doc_bwcb9q.png)
 
 Then, add template name and choose one of my document page as template.
 

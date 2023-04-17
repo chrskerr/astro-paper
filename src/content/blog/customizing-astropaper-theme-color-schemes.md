@@ -1,8 +1,8 @@
 ---
 author: Sat Naing
-datetime: 2022-09-25T15:20:35Z
+pubDatetime: 2022-09-25T15:20:35Z
 title: Customizing AstroPaper theme color schemes
-slug: ""
+postSlug: ""
 featured: false
 draft: false
 tags:
@@ -103,7 +103,7 @@ In AstroPaper theme, `:root` and `html[data-theme="light"]` selectors are used a
 
 Colors are declared in CSS custom property (CSS Variable) notation. Color property values are written in rgb values. (Note: instead of `rgb(40, 39, 40)`, only specify `40, 39, 40`)
 
-Here is the detail explaination of color properties.
+Here is the detail explanation of color properties.
 
 | Color Property       | Definition & Usage                                         |
 | -------------------- | ---------------------------------------------------------- |
@@ -130,3 +130,5 @@ Here is an example of changing the light color scheme.
   }
 }
 ```
+
+> Check out some [predefined color schemes](https://astro-paper.pages.dev/posts/predefined-color-schemes/) AstroPaper has already crafted for you.
