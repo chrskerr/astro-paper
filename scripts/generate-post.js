@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
-import fs from "fs";
-import prompts from "prompts";
-import { slug as slugger } from "github-slugger";
-import kleur from "kleur";
-import { SITE } from "../config.js";
+const fs = require("fs");
+const prompts = require("prompts");
+const kleur = require("kleur");
+
+const AUTHOR = "YOUR_NAME";
 
 const currentDatetime = new Date().toISOString();
-let newFileName = currentDatetime.replace(/\:|\./g, "-");
+let newFileName = currentDatetime.replace(/:|\./g, "-");
 let content = getContent();
 
-const getFileName = (filename: string): string => filename.split("/").at(-1)!;
+const getFileName = filename => filename.split("/").at(-1);
 
 async function welcome() {
   console.log(`Welcome to ${kleur
@@ -21,6 +21,9 @@ async function welcome() {
 }
 
 async function askQuestions() {
+  const { default: GithubSlugger } = await import("github-slugger");
+  const slugger = new GithubSlugger();
+
   const { fileName, title, slug, desc, featured, draft, datetime } =
     await prompts(
       [
@@ -41,7 +44,7 @@ async function askQuestions() {
           type: "text",
           name: "slug",
           message: "Enter post slug ",
-          initial: prev => slugger(getFileName(prev)),
+          initial: prev => slugger.slug(getFileName(prev)),
         },
         {
           type: "date",
@@ -99,10 +102,10 @@ function getContent(
   datetime = currentDatetime
 ) {
   return `---
-author: ${SITE.author}
-datetime: ${datetime}
+author: ${AUTHOR}
+pubDatetime: ${datetime}
 title: ${title ? title : "# Your_Post_Title"}
-slug: ${slug ? slug : "# Your_Post_Slug"}
+postSlug: ${slug ? slug : "# Your_Post_Slug"}
 featured: ${featured}
 draft: ${draft}
 tags:
@@ -123,7 +126,7 @@ description: ${desc ? desc : "# A_brief_description_about_your_new_article"}
 async function generateFile() {
   const filePath = newFileName.split("/");
   const dir = filePath.slice(0, -1);
-  const contentDirectory = `./src/contents/${dir}`;
+  const contentDirectory = `./src/content/blog/${dir}`;
 
   // Create a directory if not exists
   // eg: filename is '/exampledir/test' => /src/contents/exampledir/test.md
@@ -133,13 +136,13 @@ async function generateFile() {
 
   // Create a new file
   fs.writeFile(
-    `./src/contents/${newFileName}.md`,
+    `./src/content/blog/${newFileName}.md`,
     content,
     { flag: "wx" },
     function (err) {
       if (err) throw err;
       console.log(
-        `New File: ${kleur.blue("/src/contents/")}${kleur.green(
+        `New File: ${kleur.blue("/src/content/blog/")}${kleur.green(
           `${newFileName}.md`
         )}`
       );
@@ -153,7 +156,7 @@ function onCancel() {
   process.exit(0);
 }
 
-function validateFileName(filename: string) {
+function validateFileName(filename) {
   // Check if filename ends with slash '/'
   if (filename.at(-1) === "/") return "File name cannot end with slash ('/')";
 
@@ -172,9 +175,12 @@ function validateFileName(filename: string) {
   return true;
 }
 
-// Invoke functions for script
-if (!process.argv[2] && process.argv[2] !== "-y") {
-  await welcome();
-  await askQuestions();
+async function main() {
+  if (!process.argv[2] && process.argv[2] !== "-y") {
+    await welcome();
+    await askQuestions();
+  }
+  await generateFile();
 }
-await generateFile();
+
+main();
